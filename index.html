@@ -1,0 +1,85 @@
+<html>
+<head>
+	<style>
+	#gamename {
+	    width: 300px;
+	    height: 100px;
+	    position: absolute;
+	    top:0;
+	    bottom: 0;
+	    left: 0;
+	    right: 0;
+
+	    margin: auto;
+	}
+	</style>
+	<script>
+	function r(x) {
+		return x[Math.floor(Math.random()*x.length)];
+	}
+	var modifier = [
+		'artistic',
+		'freestyle',
+		'greco-roman',
+		'rhythmic',
+		'synchronized'
+	];
+	var loc = [
+		'table',
+		'street',
+		'water',
+		'beach',
+		'equestrian',
+		'lawn'
+	];
+	var game = [
+		'archery',
+		'badminton',
+		'boxing',
+		'canoe',
+		'cycling',
+		'diving',
+		'fencing',
+		'handball',
+		'hockey',
+		'judo',
+		'rowing',
+		'rugby',
+		'sailing',
+		'shooting',
+		'swimming',
+		'tennis',
+		'trampoline',
+		'polo',
+		'weightlifting',
+		'wrestling'
+	];
+	var suffix = [
+		'slalom',
+		'sprint'
+	];
+	window.onload = function () {
+		var words = [];
+		if (Math.random() < .3) {
+			words.push(r(modifier));
+		}
+		words.push(r(loc));
+		if (Math.random() < .3) {
+			var secondLoc = r(loc);
+			if (words.slice(-1)[0] != secondLoc) {
+				words.push(secondLoc);
+			}
+		}
+		words.push(r(game));
+		if (Math.random() < .2) {
+			words.push(r(suffix));
+		}
+		var sport = words.join(' ');
+		document.getElementById('gamename').innerHTML = sport;
+	};
+	</script>
+</head>
+<body>
+	<div id="gamename"></div>
+</body>
+</html>
